@@ -1,0 +1,20 @@
+version: '2'
+
+services:
+  node:
+    ports:
+      - "8000:3000"
+    volumes:
+      - ../:/app
+  
+  styleguidist:
+    build: ./node
+    working_dir: /app
+    volumes:
+      - ../:/app
+    ports:
+      - "8060:6060"
+    environment:
+      - http_proxy
+      - https_proxy
+    entrypoint: node ./node_modules/.bin/styleguidist --config ./config/styleguide.config.js server

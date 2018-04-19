@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+  node:
+    build: ./node
+    working_dir: /app
+    environment:
+      - http_proxy
+      - https_proxy
+    entrypoint: node ./config/webpack/scripts/start.js
